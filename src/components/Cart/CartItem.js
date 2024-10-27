@@ -7,9 +7,7 @@ const CartItem = (props) => {
   const dispatchFunction = useDispatch();
 
   const addToCartHandler = (e) => {
-    dispatchFunction(
-      cartSliceActions.addProduct({ id, title, quantity, total, price })
-    );
+    dispatchFunction(cartSliceActions.addProduct(props.item));
   };
 
   const deleteFromCartHandler = (e) => {
