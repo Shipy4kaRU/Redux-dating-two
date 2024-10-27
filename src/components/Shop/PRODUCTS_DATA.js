@@ -23,7 +23,7 @@ export const PRODUCTS_DATA = [
   {
     id: 4,
     title: "Плохой-Товар",
-    price: 2,
+    price: 1,
     description:
       "Благодаря своему ужасному качеству, этот товар сломается завтра.",
   },
