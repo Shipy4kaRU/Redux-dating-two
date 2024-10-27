@@ -31,13 +31,13 @@ const cartSlice = createSlice({
       const existingProduct = state.products.find(
         (product) => product.id === Number(idProduct)
       );
-      existingProduct.quantity--;
-      existingProduct.total = existingProduct.total - existingProduct.price;
-      if (existingProduct.quantity <= 0) {
-        const productIndex = state.products.findIndex(
-          (el) => el.id === Number(idProduct)
+      if (existingProduct.quantity === 1) {
+        state.products = state.products.filter(
+          (el) => el.id !== Number(idProduct)
         );
-        state.products.splice(productIndex, 1);
+      } else {
+        existingProduct.quantity--;
+        existingProduct.total = existingProduct.total - existingProduct.price;
       }
       state.productsQuantity = state.products.reduce((acc, product) => {
         return acc + product.quantity;
