@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import styles from "./CartItem.module.css";
-import { PRODUCTS_DATA } from "../Shop/PRODUCTS_DATA";
 import { cartSliceActions } from "../store/cartSlice";
 
 const CartItem = (props) => {
@@ -8,14 +7,13 @@ const CartItem = (props) => {
   const dispatchFunction = useDispatch();
 
   const addToCartHandler = (e) => {
-    const productId = e.target.dataset.id;
-    const product = PRODUCTS_DATA.find((el) => el.id === Number(productId));
-    dispatchFunction(cartSliceActions.addProduct(product));
+    dispatchFunction(
+      cartSliceActions.addProduct({ id, title, quantity, total, price })
+    );
   };
 
   const deleteFromCartHandler = (e) => {
-    const productId = e.target.dataset.id;
-    dispatchFunction(cartSliceActions.deleteProduct(productId));
+    dispatchFunction(cartSliceActions.deleteProduct(id));
   };
 
   return (
@@ -34,12 +32,8 @@ const CartItem = (props) => {
           x <span>{quantity}</span>
         </div>
         <div className={styles.actions}>
-          <button onClick={deleteFromCartHandler} data-id={id}>
-            -
-          </button>
-          <button onClick={addToCartHandler} data-id={id}>
-            +
-          </button>
+          <button onClick={deleteFromCartHandler}>-</button>
+          <button onClick={addToCartHandler}>+</button>
         </div>
       </div>
     </li>

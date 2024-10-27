@@ -2,16 +2,15 @@ import { useDispatch } from "react-redux";
 import { cartSliceActions } from "../store/cartSlice";
 import Card from "../UI/Card";
 import styles from "./ProductItem.module.css";
-import { PRODUCTS_DATA } from "./PRODUCTS_DATA";
 
 const ProductItem = (props) => {
   const { title, price, description, id } = props;
   const dispatchFunction = useDispatch();
 
-  const addToCartHandler = (e) => {
-    const productId = e.target.dataset.id;
-    const product = PRODUCTS_DATA.find((el) => el.id === Number(productId));
-    dispatchFunction(cartSliceActions.addProduct(product));
+  const addToCartHandler = () => {
+    dispatchFunction(
+      cartSliceActions.addProduct({ id, title, price, description })
+    );
   };
 
   return (
@@ -23,9 +22,7 @@ const ProductItem = (props) => {
         </header>
         <p>{description}</p>
         <div className={styles.actions}>
-          <button onClick={addToCartHandler} data-id={id}>
-            Добавить в Корзину
-          </button>
+          <button onClick={addToCartHandler}>Добавить в Корзину</button>
         </div>
       </Card>
     </li>
