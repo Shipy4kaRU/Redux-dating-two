@@ -22,9 +22,7 @@ const cartSlice = createSlice({
           total: newProduct.price,
         });
       }
-      state.productsQuantity = state.products.reduce((acc, product) => {
-        return acc + product.quantity;
-      }, 0);
+      state.productsQuantity++;
     },
     deleteProduct(state, action) {
       const idProduct = action.payload;
@@ -39,9 +37,7 @@ const cartSlice = createSlice({
         existingProduct.quantity--;
         existingProduct.total = existingProduct.total - existingProduct.price;
       }
-      state.productsQuantity = state.products.reduce((acc, product) => {
-        return acc + product.quantity;
-      }, 0);
+      state.productsQuantity--;
     },
   },
 });
