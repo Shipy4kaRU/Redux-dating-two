@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Redux-dating-two/static/css/main.f2c5027b.css",
+    "main.js": "/Redux-dating-two/static/js/main.e25343c5.js",
+    "index.html": "/Redux-dating-two/index.html",
+    "main.f2c5027b.css.map": "/Redux-dating-two/static/css/main.f2c5027b.css.map",
+    "main.e25343c5.js.map": "/Redux-dating-two/static/js/main.e25343c5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f2c5027b.css",
+    "static/js/main.e25343c5.js"
+  ]
+}
