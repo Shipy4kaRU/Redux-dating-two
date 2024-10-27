@@ -12,7 +12,7 @@ function App() {
 
   return (
     <Layout onOpenCart={openCartHandler}>
-      {isCartOpen && <Cart />}
+      {<Cart isCartOpen={isCartOpen} />}
       <Products />
     </Layout>
   );

@@ -4,7 +4,11 @@ import CartItem from "./CartItem";
 
 const Cart = (props) => {
   return (
-    <Card className={styles.cart}>
+    <Card
+      className={`${styles.cart} ${
+        props.isCartOpen ? styles["cart--appear"] : styles["cart--disappear"]
+      }`}
+    >
       <h2>Мои Покупки</h2>
       <ul>
         <CartItem
