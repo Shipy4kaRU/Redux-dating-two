@@ -27,19 +27,17 @@ const cartSlice = createSlice({
       }, 0);
     },
     deleteProduct(state, action) {
-      const newProduct = action.payload;
+      const idProduct = action.payload;
       const existingProduct = state.products.find(
-        (product) => product.id === newProduct.id
+        (product) => product.id === Number(idProduct)
       );
-      if (existingProduct) {
-        existingProduct.quantity--;
-        existingProduct.total = existingProduct.total - existingProduct.price;
-      }
+      existingProduct.quantity--;
+      existingProduct.total = existingProduct.total - existingProduct.price;
       if (existingProduct.quantity <= 0) {
-        const existingProductIndex = state.products.findIndex(
-          (el) => el === existingProduct
+        const productIndex = state.products.findIndex(
+          (el) => el.id === Number(idProduct)
         );
-        state.products.splice(existingProductIndex, 1);
+        state.products.splice(productIndex, 1);
       }
       state.productsQuantity = state.products.reduce((acc, product) => {
         return acc + product.quantity;

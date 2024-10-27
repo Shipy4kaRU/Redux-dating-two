@@ -15,8 +15,7 @@ const CartItem = (props) => {
 
   const deleteFromCartHandler = (e) => {
     const productId = e.target.dataset.id;
-    const product = PRODUCTS_DATA.find((el) => el.id === Number(productId));
-    dispatchFunction(cartSliceActions.deleteProduct(product));
+    dispatchFunction(cartSliceActions.deleteProduct(productId));
   };
 
   return (
