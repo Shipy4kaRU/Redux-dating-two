@@ -39,10 +39,10 @@ const cartSlice = createSlice({
       }
       state.productsQuantity--;
     },
-    updateCart(state, action) {
-      state.products = action.payload.products;
-      state.productsQuantity = action.payload.productsQuantity;
-    },
+    // updateCart(state, action) {
+    //   state.products = action.payload.products;
+    //   state.productsQuantity = action.payload.productsQuantity;
+    // },
   },
 });
 
