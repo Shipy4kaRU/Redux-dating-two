@@ -3,6 +3,7 @@ import Cart from "./components/Cart/Cart";
 import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import StatusBarMessage from "./components/UI/StatusBarMessage";
+import { getCartData } from "./components/store/cartSlice";
 import { sendCartData } from "./components/store/CartRequestSlice";
 // import { CartRequestSliceActions } from "./components/store/CartRequestSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +18,10 @@ function App() {
   const cartState = useSelector((state) => state.cartSlice);
 
   const dispatchFunction = useDispatch();
+
+  useEffect(() => {
+    dispatchFunction(getCartData());
+  }, []);
 
   useEffect(() => {
     // const sendCartData = async () => {
@@ -66,7 +71,8 @@ function App() {
     //     console.error(`Произошла ошибка: ${err.message}`);
     //   }
     // };
-    if (!isAppRunningFirst) dispatchFunction(sendCartData(cartState));
+    if (!isAppRunningFirst && cartState.isUpdatedContent)
+      dispatchFunction(sendCartData(cartState));
     isAppRunningFirst = false;
   }, [cartState, dispatchFunction]);
 

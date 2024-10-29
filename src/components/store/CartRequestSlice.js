@@ -38,7 +38,7 @@ export const sendCartData = (cartData) => {
         requestMessage: "Данные корзины отправляются на сервер...",
       })
     );
-    const sendHttpRequest = async () => {
+    const sendDataRequest = async () => {
       const response = await fetch(
         "https://sushiapp-3c0b7-default-rtdb.firebaseio.com/cart.json",
         {
@@ -55,7 +55,7 @@ export const sendCartData = (cartData) => {
     };
 
     try {
-      await sendHttpRequest();
+      await sendDataRequest();
       dispatchAction(
         CartRequestSliceActions.showMessageRequest({
           requestStatus: "success",
