@@ -43,7 +43,10 @@ export const sendCartData = (cartData) => {
         "https://sushiapp-3c0b7-default-rtdb.firebaseio.com/cart.json",
         {
           method: "PUT",
-          body: JSON.stringify(cartData),
+          body: JSON.stringify({
+            products: cartData.products,
+            productsQuantity: cartData.productsQuantity,
+          }),
           headers: {
             "Content-Type": "application/json",
           },
